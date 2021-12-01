@@ -11,7 +11,9 @@
 #' @param style  Optional character string indicating md style to use. Possible
 #' options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.
 #' @param style_prefix Logical specifying whether the style should be applied to
-#' the prefix only (\emph{TRUE}) or the entire caption.  The default is \emph{FALSE}.
+#' the prefix only (\emph{TRUE}) or the entire caption.  The default is \emph{FALSE}. 
+#' @param number_prefix String specifying a prefix for the number. 
+#' E.g. "S" will give "S1", "S2", "S3". The default is "".
 #' @param levels Logical or number indicating whether or not you want hierarchical
 #' numbering, and if so, how many levels.  Hierarchical numbering is turned off by
 #' default.
@@ -65,7 +67,7 @@
 #' @export
 
 captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
-                      style = NULL, style_prefix = FALSE,
+                      style = NULL, style_prefix = FALSE, number_prefix = "",
                       levels = 1, type = NULL, infix = ".", 
                       before = FALSE, knitr_op = NULL,
                       css_class = NULL)
@@ -76,6 +78,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
   check_class(prefix,       "character")
   check_class(suffix,       "character")
   check_class(style_prefix, "logical")
+  check_class(number_prefix,"character")
   check_class(levels,       "numeric")
   check_class(infix,        "character")
   check_class(before,       "logical")
@@ -115,7 +118,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
   
   # Assign the first caption number
   # Note that extra values of "type" are ignored by looping over "levels"
-  OBJECTS$number[[1]][which(type == "n")] <- 1
+  OBJECTS$number[[1]][which(type == "n")] <-  1
   OBJECTS$number[[1]][which(type == "c")] <- "a"
   OBJECTS$number[[1]][which(type == "C")] <- "A"
   
@@ -215,7 +218,7 @@ captioner <- function(prefix = "Figure", suffix = ":", auto_space = TRUE,
     }
     
     # Create display version of object number
-    obj_num <- paste(objects$number[[obj_ind]], collapse = infix)
+    obj_num <- paste0(number_prefix, paste(objects$number[[obj_ind]], collapse = infix))
     
     # Generate final display version
     if(display == FALSE)
