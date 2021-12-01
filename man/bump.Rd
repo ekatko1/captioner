@@ -34,4 +34,3 @@ bump(figs, 1)
 \seealso{
 \code{\link{captioner}}
 }
-

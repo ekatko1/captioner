@@ -15,4 +15,3 @@ increment(values, level)
 Increment function, for incrementing a hierarchical number
 }
 \keyword{internal}
-

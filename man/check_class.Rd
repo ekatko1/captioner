@@ -15,4 +15,3 @@ check_class(.param, .class)
 Check the class of an input parameter
 }
 \keyword{internal}
-

@@ -4,9 +4,20 @@
 \alias{captioner}
 \title{Captioner function}
 \usage{
-captioner(prefix = "Figure", suffix = ":", auto_space = TRUE,
-  style = NULL, style_prefix = FALSE, levels = 1, type = NULL,
-  infix = ".", before = FALSE, knitr_op = NULL, css_class = NULL)
+captioner(
+  prefix = "Figure",
+  suffix = ":",
+  auto_space = TRUE,
+  style = NULL,
+  style_prefix = FALSE,
+  number_prefix = "",
+  levels = 1,
+  type = NULL,
+  infix = ".",
+  before = FALSE,
+  knitr_op = NULL,
+  css_class = NULL
+)
 }
 \arguments{
 \item{prefix}{Character string containing text to go before object number.
@@ -23,6 +34,9 @@ options: bold \emph{b}, italic \emph{i}, or bold+italic \emph{bi}.}
 
 \item{style_prefix}{Logical specifying whether the style should be applied to
 the prefix only (\emph{TRUE}) or the entire caption.  The default is \emph{FALSE}.}
+
+\item{number_prefix}{String specifying a prefix for the number. 
+E.g. "S" will give "S1", "S2", "S3". The default is "".}
 
 \item{levels}{Logical or number indicating whether or not you want hierarchical
 numbering, and if so, how many levels.  Hierarchical numbering is turned off by
@@ -85,4 +99,3 @@ tables <- captioner(prefix = "Table", levels = 2)
 tables("a", "Table of world populations sorted from greatest to least.")
   
 }
-

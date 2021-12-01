@@ -20,4 +20,3 @@ so the caption and chunk names must match. \code{cap} takes the name of
 the corresponding captioner function, in quotes.
 }
 \keyword{internal}
-
